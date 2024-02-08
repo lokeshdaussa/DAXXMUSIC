@@ -23,12 +23,12 @@ from youtubesearchpython import SearchVideos
 
 @app.on_message(filters.command("song"))
 def download_song(_, message):
-    query = " ".join(message.command[1:])  
-    print(query)
+    answer = " ".join(message.command[1:])  
+    print(answer)
     m = message.reply("**🔄 sᴇᴀʀᴄʜɪɴɢ... **")
     ydl_ops = {"format": "bestaudio[ext=m4a]"}
     try:
-        results = YoutubeSearch(query, max_results=1).to_dict()
+        results = YoutubeSearch(answer, max_results=1).to_dict()
         link = f"https://youtube.com{results[0]['url_suffix']}"
         title = results[0]["title"][:40]
         thumbnail = results[0]["thumbnails"][0]
